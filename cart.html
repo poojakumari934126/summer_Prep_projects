@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View your FoodieHub cart. Review items, apply promo discount codes, and proceed to secure checkout.">
+  <title>FoodieHub - Shopping Cart</title>
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== STICKY NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>Foodie</span>Hub
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Wishlist Link -->
+        <a href="wishlist.html" class="wishlist-icon-btn" aria-label="My Wishlist" title="My Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="wishlist-badge">0</span>
+        </a>
+
+        <!-- Cart Link -->
+        <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart" title="Shopping Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Open Mobile Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <section style="background: linear-gradient(135deg, var(--bg-main) 0%, var(--primary-light) 100%); padding: 45px 0; border-bottom: 1px solid var(--border-color);">
+    <div class="container" style="text-align: center;">
+      <h1 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 10px;">Your Shopping <span style="color: var(--primary);">Cart</span></h1>
+      <p style="color: var(--text-muted);">Review your delicious selections before checking out</p>
+    </div>
+  </section>
+
+  <!-- ==================== CART CONTENT ==================== -->
+  <section class="section">
+    <div class="container">
+      
+      <!-- Cart Grid Container -->
+      <div id="cart-content-layout" class="cart-layout">
+        
+        <!-- Cart Items Table Column -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+            <h3 id="cart-item-count" style="font-size: 1.3rem; font-weight: 700;">Cart Items (0)</h3>
+            <button class="btn btn-secondary btn-sm" onclick="cartEngine.clearCart()"><i class="fas fa-trash-alt"></i> Clear Cart</button>
+          </div>
+
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Dish</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="cart-table-body">
+              <!-- Rendered Dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Order Summary Card Column -->
+        <div>
+          <div class="cart-summary-card">
+            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Order Summary</h3>
+            
+            <div class="summary-row">
+              <span>Items Subtotal:</span>
+              <span id="summary-subtotal" style="font-weight: 600; color: var(--text-main);">$0.00</span>
+            </div>
+
+            <div class="summary-row">
+              <span>GST & Taxes (5%):</span>
+              <span id="summary-tax" style="font-weight: 600; color: var(--text-main);">$0.00</span>
+            </div>
+
+            <div class="summary-row">
+              <span>Delivery Fee:</span>
+              <span id="summary-delivery" style="font-weight: 600; color: var(--accent-green);">$0.00</span>
+            </div>
+
+            <div id="summary-discount-row" class="summary-row" style="display: none; color: var(--accent-green);">
+              <span>Promo Discount (SAVER20):</span>
+              <span id="summary-discount" style="font-weight: 700;">-$0.00</span>
+            </div>
+
+            <!-- Coupon Box -->
+            <div class="coupon-box">
+              <input type="text" id="coupon-code-input" placeholder="Promo code (e.g. SAVER20)">
+              <button class="btn btn-secondary btn-sm" onclick="applyPromoCode()">Apply</button>
+            </div>
+
+            <div class="summary-row total">
+              <span>Grand Total:</span>
+              <span id="summary-grand-total" style="color: var(--primary);">$0.00</span>
+            </div>
+
+            <a href="checkout.html" class="btn btn-primary" style="width: 100%; margin-top: 20px;"><i class="fas fa-credit-card"></i> Proceed To Checkout</a>
+            <a href="menu.html" class="btn btn-secondary" style="width: 100%; margin-top: 10px;"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Empty Cart Screen -->
+      <div id="empty-cart-state" style="display: none; text-align: center; padding: 70px 20px; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); max-width: 600px; margin: 0 auto;">
+        <i class="fas fa-shopping-basket" style="font-size: 4rem; color: var(--primary); margin-bottom: 18px;"></i>
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px;">Your Cart is Empty</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 26px;">Looks like you haven't added any gourmet dishes to your cart yet.</p>
+        <a href="menu.html" class="btn btn-primary"><i class="fas fa-utensils"></i> Explore Menu & Order</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: #FFF;">
+            <i class="fas fa-utensils"></i>
+            <span>Foodie</span>Hub
+          </a>
+          <p style="margin-top: 14px; font-size: 0.9rem;">FoodieHub brings gourmet meals from your favorite local restaurants straight to your home.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Explore Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Newsletter</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 14px;">Subscribe for discount coupons.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 10px; border-radius: var(--radius-sm); border: none; width: 100%;">
+            <button class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FoodieHub Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick View Modal -->
+  <div id="quick-view-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Scroll To Top Button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartPage();
+    });
+
+    window.addEventListener('cartUpdated', () => {
+      renderCartPage();
+    });
+
+    function renderCartPage() {
+      const tbody = document.getElementById('cart-table-body');
+      const layout = document.getElementById('cart-content-layout');
+      const emptyState = document.getElementById('empty-cart-state');
+      const itemCountText = document.getElementById('cart-item-count');
+
+      const items = cartEngine.items;
+
+      if (items.length === 0) {
+        layout.style.display = 'none';
+        emptyState.style.display = 'block';
+      } else {
+        emptyState.style.display = 'none';
+        layout.style.display = 'grid';
+
+        const totalQty = items.reduce((acc, item) => acc + item.quantity, 0);
+        itemCountText.textContent = `Cart Items (${totalQty})`;
+
+        tbody.innerHTML = items.map(item => `
+          <tr>
+            <td>
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <img src="${item.image}" alt="${item.name}" style="width: 54px; height: 54px; object-fit: cover; border-radius: 8px;">
+                <div>
+                  <strong style="display: block; color: var(--text-main); font-size: 0.95rem;">${item.name}</strong>
+                  <small style="color: var(--text-muted);">${item.category}</small>
+                </div>
+              </div>
+            </td>
+            <td style="font-weight: 600;">$${item.price.toFixed(2)}</td>
+            <td>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="cartEngine.updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                <span style="font-weight: 700; width: 20px; text-align: center;">${item.quantity}</span>
+                <button class="qty-btn" onclick="cartEngine.updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+              </div>
+            </td>
+            <td style="font-weight: 700; color: var(--primary);">$${(item.price * item.quantity).toFixed(2)}</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" onclick="cartEngine.removeItem('${item.id}')" title="Remove"><i class="fas fa-trash-alt" style="color: #E74C3C;"></i></button>
+            </td>
+          </tr>
+        `).join('');
+
+        const subtotal = cartEngine.getSubtotal();
+        const tax = cartEngine.getTax();
+        const delivery = cartEngine.getDeliveryFee();
+        const discount = cartEngine.getDiscountAmount();
+        const total = cartEngine.getGrandTotal();
+
+        document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('summary-tax').textContent = `$${tax.toFixed(2)}`;
+        document.getElementById('summary-delivery').textContent = delivery === 0 ? 'FREE' : `$${delivery.toFixed(2)}`;
+        
+        const discRow = document.getElementById('summary-discount-row');
+        if (discount > 0) {
+          discRow.style.display = 'flex';
+          document.getElementById('summary-discount').textContent = `-$${discount.toFixed(2)}`;
+        } else {
+          discRow.style.display = 'none';
+        }
+
+        document.getElementById('summary-grand-total').textContent = `$${total.toFixed(2)}`;
+      }
+    }
+
+    function applyPromoCode() {
+      const code = document.getElementById('coupon-code-input').value.trim();
+      if (!code) {
+        showToast('Please enter a coupon code', 'error');
+        return;
+      }
+      const success = cartEngine.applyPromo(code);
+      if (success) {
+        showToast('Coupon applied! 20% discount added.', 'success');
+      } else {
+        showToast('Invalid coupon code. Try SAVER20', 'error');
+      }
+    }
+  </script>
+</body>
+</html>

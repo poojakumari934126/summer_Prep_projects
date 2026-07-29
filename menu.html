@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore FoodieHub's extensive menu. Search and filter through 100+ fresh gourmet dishes, pizzas, burgers, desserts, and beverages.">
+  <title>FoodieHub - Interactive Food Menu</title>
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== 1. NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>Foodie</span>Hub
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link active">Menu</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Wishlist Icon Button -->
+        <a href="wishlist.html" class="wishlist-icon-btn" aria-label="My Wishlist" title="My Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="wishlist-badge">0</span>
+        </a>
+
+        <!-- Cart Icon Button -->
+        <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart" title="Shopping Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Open Mobile Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. PREMIUM RESTAURANT HERO BANNERS & 3. SEARCH BAR ==================== -->
+  <section class="page-hero menu-hero-bg">
+    <div class="container">
+      <span class="badge" style="background: rgba(255,107,53,0.2); color: #FF6B35; border: 1px solid rgba(255,107,53,0.4); margin-bottom: 12px;">
+        <i class="fas fa-utensils"></i> Gourmet Dining Experience
+      </span>
+      
+      <!-- White Heading with Orange Accent -->
+      <h1>Explore Our <span>Gourmet Menu</span></h1>
+      <p class="subtitle-text">Order fresh, artisanal dishes prepared by master chefs delivered steaming hot to your doorstep.</p>
+      
+      <!-- Centered Live Search Bar -->
+      <div style="max-width: 580px; margin: 0 auto 20px auto; display: flex; background: #FFFFFF; padding: 8px 18px; border-radius: var(--radius-full); box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
+        <i class="fas fa-search" style="align-self: center; color: var(--text-muted); margin-right: 12px; font-size: 1.1rem;"></i>
+        <input type="text" id="menu-search-input" placeholder="Search dish by name, category, or cuisine..." style="flex: 1; background: transparent; color: #0F172A; font-size: 1rem;">
+      </div>
+
+      <!-- 3 Quick Stats Below Search -->
+      <div class="hero-stats-row">
+        <span class="hero-stat-pill"><i class="fas fa-star" style="color: #F59E0B;"></i> 100+ Gourmet Dishes</span>
+        <span class="hero-stat-pill"><i class="fas fa-truck-fast" style="color: #FF6B35;"></i> 30 Min Express Delivery</span>
+        <span class="hero-stat-pill"><i class="fas fa-user-ninja" style="color: #10B981;"></i> Freshly Prepared Daily</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. POPULAR CATEGORY CHIPS ==================== -->
+  <section style="background: var(--bg-surface); padding: 20px 0; border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="category-chips-wrapper" id="category-chips-bar">
+        <button class="category-chip active" data-cat="All"><i class="fas fa-border-all"></i> All Dishes</button>
+        <button class="category-chip" data-cat="Pizza"><i class="fas fa-pizza-slice"></i> Pizza</button>
+        <button class="category-chip" data-cat="Burger"><i class="fas fa-hamburger"></i> Burger</button>
+        <button class="category-chip" data-cat="Biryani"><i class="fas fa-drumstick-bite"></i> Biryani</button>
+        <button class="category-chip" data-cat="Chinese"><i class="fas fa-bowl-rice"></i> Chinese</button>
+        <button class="category-chip" data-cat="North Indian"><i class="fas fa-pepper-hot"></i> North Indian</button>
+        <button class="category-chip" data-cat="South Indian"><i class="fas fa-utensil-spoon"></i> South Indian</button>
+        <button class="category-chip" data-cat="Italian"><i class="fas fa-cheese"></i> Italian</button>
+        <button class="category-chip" data-cat="Mexican"><i class="fas fa-pepper-hot"></i> Mexican</button>
+        <button class="category-chip" data-cat="Desserts"><i class="fas fa-cookie"></i> Desserts</button>
+        <button class="category-chip" data-cat="Drinks"><i class="fas fa-glass-martini-alt"></i> Drinks</button>
+        <button class="category-chip" data-cat="Healthy"><i class="fas fa-leaf"></i> Healthy</button>
+        <button class="category-chip" data-cat="Sea Food"><i class="fas fa-fish"></i> Sea Food</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. FILTERS & 6. COUNTER & 7. GRID & 8. LOAD MORE ==================== -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 270px 1fr; gap: 32px;" id="menu-layout-grid">
+        
+        <!-- SIDEBAR FILTERS -->
+        <aside style="background: var(--bg-card); padding: 26px; border-radius: var(--radius-md); border: 1px solid var(--border-color); height: fit-content; box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+            <i class="fas fa-filter" style="color: var(--primary);"></i> Filters
+          </h3>
+
+          <!-- Category Filter Select -->
+          <div style="margin-bottom: 22px;">
+            <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text-muted);">Category</h4>
+            <select id="category-filter-select" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+              <option value="All">All Categories</option>
+              <option value="Pizza">Pizza</option>
+              <option value="Burger">Burger</option>
+              <option value="Biryani">Biryani</option>
+              <option value="Chinese">Chinese</option>
+              <option value="North Indian">North Indian</option>
+              <option value="South Indian">South Indian</option>
+              <option value="Italian">Italian</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Desserts">Desserts</option>
+              <option value="Drinks">Drinks</option>
+              <option value="Pasta">Pasta</option>
+              <option value="Sea Food">Sea Food</option>
+              <option value="Healthy">Healthy</option>
+            </select>
+          </div>
+
+          <!-- Cuisine Filter Select -->
+          <div style="margin-bottom: 22px;">
+            <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text-muted);">Cuisine</h4>
+            <select id="cuisine-filter-select" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+              <option value="All">All Cuisines</option>
+              <option value="Indian">Indian</option>
+              <option value="Italian">Italian</option>
+              <option value="Chinese">Chinese</option>
+              <option value="American">American</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Thai">Thai</option>
+              <option value="Japanese">Japanese</option>
+            </select>
+          </div>
+
+          <!-- Dietary Checkboxes -->
+          <div style="margin-bottom: 22px; display: flex; flex-direction: column; gap: 10px;">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600;">
+              <input type="checkbox" id="veg-only-check" style="accent-color: var(--accent-green); width: 18px; height: 18px;">
+              <span>Vegetarian Only 🌱</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600;">
+              <input type="checkbox" id="popular-only-check" style="accent-color: var(--primary); width: 18px; height: 18px;">
+              <span>Popular / Bestsellers 🔥</span>
+            </label>
+          </div>
+
+          <!-- Price Filter -->
+          <div style="margin-bottom: 22px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.95rem; font-weight: 600; margin-bottom: 8px;">
+              <span style="color: var(--text-muted);">Max Price:</span>
+              <span id="price-val" style="color: var(--primary);">$50</span>
+            </div>
+            <input type="range" id="price-filter-range" min="5" max="50" step="1" value="50" style="width: 100%; accent-color: var(--primary);">
+          </div>
+
+          <!-- Sort Filter -->
+          <div>
+            <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text-muted);">Sort By</h4>
+            <select id="sort-select" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+              <option value="default">Default</option>
+              <option value="rating-desc">Rating: High to Low</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+            </select>
+          </div>
+        </aside>
+
+        <!-- MAIN FOOD DISPLAY -->
+        <div>
+          <!-- Counter -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <span id="results-count" style="font-weight: 700; font-size: 1.05rem; color: var(--text-main);">Showing 12 of 100 dishes</span>
+          </div>
+
+          <!-- Food Cards Grid -->
+          <div id="menu-food-grid" class="food-grid">
+            <!-- Dynamically Rendered Synchronously -->
+          </div>
+
+          <!-- Load More Button -->
+          <div id="load-more-container" style="text-align: center; margin-top: 40px; display: none;">
+            <button class="btn btn-primary" onclick="searchEngine.loadMore()"><i class="fas fa-sync"></i> Load More Dishes</button>
+          </div>
+
+          <!-- Professional No Results Screen -->
+          <div id="no-results-state" style="display: none; text-align: center; padding: 60px 20px; background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+            <i class="fas fa-search-minus" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 16px;"></i>
+            <h3 style="margin-bottom: 8px; font-size: 1.5rem; font-weight: 700;">No Dishes Found</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px; max-width: 450px; margin-left: auto; margin-right: auto;">We couldn't find any dishes matching your exact search criteria. Try adjusting your filters or search term.</p>
+            <button class="btn btn-primary btn-sm" onclick="resetFilters()"><i class="fas fa-redo"></i> Reset All Filters</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: #FFF;">
+            <i class="fas fa-utensils"></i>
+            <span>Foodie</span>Hub
+          </a>
+          <p style="margin-top: 14px; font-size: 0.9rem;">FoodieHub brings gourmet meals from your favorite local restaurants straight to your home.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Explore Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Newsletter</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 14px;">Subscribe for discount coupons.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 10px; border-radius: var(--radius-sm); border: none; width: 100%;">
+            <button class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FoodieHub Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick View Modal -->
+  <div id="quick-view-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Scroll To Top Button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/foodData.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function renderCards(filtered, visibleCount, totalCount, hasMore) {
+      const foodGrid = document.getElementById('menu-food-grid');
+      const noResults = document.getElementById('no-results-state');
+      const resultsCount = document.getElementById('results-count');
+      const loadMoreContainer = document.getElementById('load-more-container');
+
+      if (!foodGrid) return;
+
+      const favs = JSON.parse(localStorage.getItem('foodiehub_favorites')) || [];
+
+      resultsCount.textContent = `Showing ${visibleCount} of ${totalCount} dish${totalCount === 1 ? '' : 'es'}`;
+
+      if (totalCount === 0) {
+        foodGrid.style.display = 'none';
+        loadMoreContainer.style.display = 'none';
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+        foodGrid.style.display = 'grid';
+        loadMoreContainer.style.display = hasMore ? 'block' : 'none';
+
+        foodGrid.innerHTML = filtered.map(meal => {
+          const isVeg = meal.veg !== undefined ? meal.veg : meal.isVeg;
+          const offerVal = meal.offer !== undefined ? meal.offer : meal.offerPercentage;
+          const prepTime = meal.time || meal.preparationTime || '20 min';
+          const isFav = favs.includes(meal.id) || favs.includes(String(meal.id));
+
+          return `
+            <div class="food-card">
+              <div class="food-card-img-wrapper">
+                <img src="${meal.image}" alt="${meal.name}" class="food-card-img" loading="lazy">
+                
+                <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${meal.id}" onclick="toggleFavorite('${meal.id}')" title="Wishlist">
+                  <i class="fas fa-heart" ${isFav ? 'style="color:#E74C3C;"' : ''}></i>
+                </button>
+                
+                <span class="food-card-tag">${meal.category}</span>
+                
+                ${offerVal > 0 ? `<span style="position: absolute; top: 14px; left: 14px; background: var(--primary); color: #FFF; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">${offerVal}% OFF</span>` : ''}
+              </div>
+
+              <div class="food-card-body">
+                <div class="food-card-header">
+                  <h3 class="food-title">${meal.name}</h3>
+                  <span class="rating-badge"><i class="fas fa-star"></i> ${meal.rating}</span>
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                  <span>${meal.cuisine} Cuisine • <i class="far fa-clock"></i> ${prepTime}</span>
+                  <span class="badge ${isVeg ? 'badge-green' : 'badge-primary'}" style="font-size: 0.7rem;">${isVeg ? 'Veg 🌱' : 'Non-Veg 🍗'}</span>
+                </div>
+
+                <div class="food-card-footer">
+                  <span class="food-price">$${meal.price.toFixed(2)}</span>
+                  
+                  <div class="card-actions">
+                    <button class="btn btn-secondary btn-sm" onclick='openQuickView(${JSON.stringify(meal).replace(/'/g, "&apos;")})' title="Quick View">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    
+                    <button class="btn btn-primary btn-sm" onclick='cartEngine.addItem(${JSON.stringify(meal).replace(/'/g, "&apos;")})'>
+                      <i class="fas fa-plus"></i> Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    window.addEventListener('searchFiltersUpdated', (e) => {
+      const { foods, visibleCount, totalCount, hasMore } = e.detail;
+      renderCards(foods, visibleCount, totalCount, hasMore);
+    });
+
+    window.addEventListener('wishlistUpdated', () => {
+      searchEngine.applyFilters();
+    });
+
+    searchEngine.setFoods(window.FOOD_DATASET || []);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+    const categoryParam = urlParams.get('category');
+
+    if (searchParam) {
+      document.getElementById('menu-search-input').value = searchParam;
+      searchEngine.setQuery(searchParam);
+    }
+
+    if (categoryParam) {
+      document.getElementById('category-filter-select').value = categoryParam;
+      searchEngine.setCategory(categoryParam);
+      highlightCategoryChip(categoryParam);
+    }
+
+    document.querySelectorAll('.category-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const cat = chip.dataset.cat;
+        document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        document.getElementById('category-filter-select').value = cat;
+        searchEngine.setCategory(cat);
+      });
+    });
+
+    function highlightCategoryChip(catName) {
+      document.querySelectorAll('.category-chip').forEach(chip => {
+        if (chip.dataset.cat === catName) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+    }
+
+    document.getElementById('menu-search-input').addEventListener('input', (e) => {
+      searchEngine.setQuery(e.target.value);
+    });
+
+    document.getElementById('category-filter-select').addEventListener('change', (e) => {
+      highlightCategoryChip(e.target.value);
+      searchEngine.setCategory(e.target.value);
+    });
+
+    document.getElementById('cuisine-filter-select').addEventListener('change', (e) => {
+      searchEngine.setCuisine(e.target.value);
+    });
+
+    document.getElementById('veg-only-check').addEventListener('change', (e) => {
+      searchEngine.setVegOnly(e.target.checked);
+    });
+
+    document.getElementById('popular-only-check').addEventListener('change', (e) => {
+      searchEngine.setPopularOnly(e.target.checked);
+    });
+
+    document.getElementById('price-filter-range').addEventListener('input', (e) => {
+      document.getElementById('price-val').textContent = `$${e.target.value}`;
+      searchEngine.setMaxPrice(e.target.value);
+    });
+
+    document.getElementById('sort-select').addEventListener('change', (e) => {
+      searchEngine.setSortBy(e.target.value);
+    });
+
+    function resetFilters() {
+      document.getElementById('menu-search-input').value = '';
+      document.getElementById('category-filter-select').value = 'All';
+      document.getElementById('cuisine-filter-select').value = 'All';
+      document.getElementById('veg-only-check').checked = false;
+      document.getElementById('popular-only-check').checked = false;
+      document.getElementById('price-filter-range').value = 50;
+      document.getElementById('price-val').textContent = '$50';
+      document.getElementById('sort-select').value = 'default';
+      highlightCategoryChip('All');
+
+      searchEngine.setQuery('');
+      searchEngine.setCategory('All');
+      searchEngine.setCuisine('All');
+      searchEngine.setVegOnly(false);
+      searchEngine.setPopularOnly(false);
+      searchEngine.setMaxPrice(50);
+      searchEngine.setSortBy('default');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your FoodieHub order. Secure checkout with address details and instant order confirmation.">
+  <title>FoodieHub - Secure Checkout</title>
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== STICKY NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>Foodie</span>Hub
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Wishlist Link -->
+        <a href="wishlist.html" class="wishlist-icon-btn" aria-label="My Wishlist" title="My Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="wishlist-badge">0</span>
+        </a>
+
+        <!-- Cart Link -->
+        <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart" title="Shopping Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Open Mobile Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <section style="background: linear-gradient(135deg, var(--bg-main) 0%, var(--primary-light) 100%); padding: 45px 0; border-bottom: 1px solid var(--border-color);">
+    <div class="container" style="text-align: center;">
+      <h1 style="font-size: 2.6rem; font-weight: 800; margin-bottom: 10px;">Secure <span style="color: var(--primary);">Checkout</span></h1>
+      <p style="color: var(--text-muted);">Enter your delivery address to place your order</p>
+    </div>
+  </section>
+
+  <!-- ==================== CHECKOUT CONTENT ==================== -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;" id="checkout-layout">
+        
+        <!-- Checkout Form Column -->
+        <div style="background: var(--bg-card); padding: 34px; border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 22px;">1. Shipping & Delivery Address</h3>
+          
+          <form id="checkout-form" onsubmit="handleOrderSubmit(event)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div>
+                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px;">Full Name *</label>
+                <input type="text" id="cust-name" required placeholder="Alex Morgan" style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px;">Phone Number *</label>
+                <input type="tel" id="cust-phone" required placeholder="+1 (555) 000-1234" style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+              </div>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px;">Delivery Street Address *</label>
+              <input type="text" id="cust-address" required placeholder="123 Main Street, Apt 4B" style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+              <div>
+                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px;">City *</label>
+                <input type="text" id="cust-city" required placeholder="New York" style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+              </div>
+              <div>
+                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px;">Postal Code *</label>
+                <input type="text" id="cust-zip" required placeholder="10001" style="width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main);">
+              </div>
+            </div>
+
+            <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 18px;">2. Payment Method</h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px;">
+              <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--primary); background: var(--primary-light); cursor: pointer; font-weight: 600;">
+                <input type="radio" name="payment-method" value="cod" checked style="accent-color: var(--primary); width: 18px; height: 18px;">
+                <span><i class="fas fa-money-bill-wave" style="color: var(--accent-green); margin-right: 8px;"></i> Cash On Delivery (COD)</span>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer; font-weight: 600;">
+                <input type="radio" name="payment-method" value="card" style="accent-color: var(--primary); width: 18px; height: 18px;">
+                <span><i class="fas fa-credit-card" style="color: var(--primary); margin-right: 8px;"></i> Credit / Debit Card</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 14px;"><i class="fas fa-check-circle"></i> Place Order Now</button>
+          </form>
+        </div>
+
+        <!-- Order Summary Side Card -->
+        <div>
+          <div class="cart-summary-card">
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 18px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Order Items</h3>
+            
+            <div id="checkout-items-list" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px;">
+              <!-- Rendered items -->
+            </div>
+
+            <div class="summary-row total">
+              <span>Grand Total:</span>
+              <span id="checkout-total" style="color: var(--primary);">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Order Confirmation Screen -->
+      <div id="order-success-screen" style="display: none; text-align: center; padding: 70px 20px; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); max-width: 650px; margin: 0 auto;">
+        <i class="fas fa-check-circle" style="font-size: 4.5rem; color: var(--accent-green); margin-bottom: 20px;"></i>
+        <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">Order Placed Successfully!</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px;">Thank you for your order! Your delicious meal is being prepared by our master chefs and will arrive in 30 minutes.</p>
+        
+        <div style="background: var(--bg-main); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: left; max-width: 480px; margin: 0 auto 30px auto;">
+          <p style="margin-bottom: 8px;"><strong>Order ID:</strong> <span id="success-order-id" style="color: var(--primary);">#FH-987654</span></p>
+          <p style="margin-bottom: 8px;"><strong>Delivery Address:</strong> <span id="success-address"></span></p>
+          <p><strong>Estimated Time:</strong> 25-30 Minutes</p>
+        </div>
+
+        <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Back To Home</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: #FFF;">
+            <i class="fas fa-utensils"></i>
+            <span>Foodie</span>Hub
+          </a>
+          <p style="margin-top: 14px; font-size: 0.9rem;">FoodieHub brings gourmet meals from your favorite local restaurants straight to your home.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Explore Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Newsletter</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 14px;">Subscribe for discount coupons.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 10px; border-radius: var(--radius-sm); border: none; width: 100%;">
+            <button class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FoodieHub Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCheckoutSummary();
+    });
+
+    function renderCheckoutSummary() {
+      const itemsList = document.getElementById('checkout-items-list');
+      const totalEl = document.getElementById('checkout-total');
+      const items = cartEngine.items;
+
+      if (items.length === 0) {
+        window.location.href = 'cart.html';
+        return;
+      }
+
+      itemsList.innerHTML = items.map(item => `
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+          <div>
+            <strong>${item.name}</strong> × ${item.quantity}
+          </div>
+          <span style="font-weight: 700; color: var(--primary);">$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+      `).join('');
+
+      totalEl.textContent = `$${cartEngine.getGrandTotal().toFixed(2)}`;
+    }
+
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('cust-name').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+      const city = document.getElementById('cust-city').value.trim();
+
+      const orderId = `#FH-${Math.floor(100000 + Math.random() * 900000)}`;
+      document.getElementById('success-order-id').textContent = orderId;
+      document.getElementById('success-address').textContent = `${address}, ${city}`;
+
+      document.getElementById('checkout-layout').style.display = 'none';
+      document.getElementById('order-success-screen').style.display = 'block';
+
+      cartEngine.clearCart();
+      showToast('Order placed successfully!', 'success');
+    }
+  </script>
+</body>
+</html>

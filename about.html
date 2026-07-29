@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about FoodieHub - Our mission, vision, leadership, team, awards, and story of culinary innovation.">
+  <title>FoodieHub - About Us & Our Story</title>
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    /* Timeline Styling */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: var(--primary-light);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      background-inherit: inherit;
+      width: 50%;
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: -10px;
+      background-color: var(--bg-card);
+      border: 4px solid var(--primary);
+      top: 24px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .left { left: 0; }
+    .right { left: 50%; }
+    .right::after { left: -10px; }
+    .timeline-content {
+      padding: 24px;
+      background: var(--bg-card);
+      position: relative;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+    @media (max-width: 767px) {
+      .timeline::after { left: 31px; }
+      .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+      .timeline-item::after { left: 21px; }
+      .right { left: 0%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 1. STICKY NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>Foodie</span>Hub
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link active">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Wishlist Link -->
+        <a href="wishlist.html" class="wishlist-icon-btn" aria-label="My Wishlist" title="My Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="wishlist-badge">0</span>
+        </a>
+
+        <!-- Cart Link -->
+        <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart" title="Shopping Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Open Mobile Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. CHEF KITCHEN HERO BANNER ==================== -->
+  <section class="page-hero about-hero-bg">
+    <div class="container">
+      <span class="badge" style="background: rgba(255,107,53,0.2); color: #FF6B35; border: 1px solid rgba(255,107,53,0.4); margin-bottom: 12px;">
+        <i class="fas fa-award"></i> OUR STORY & CULINARY PASSION
+      </span>
+
+      <!-- Pure White Heading with Orange Accent -->
+      <h1>Crafting The Future Of <span>Food Delivery</span></h1>
+      <p class="subtitle-text">Reimagining gourmet dining by connecting food lovers with master chefs, organic sourcing, and lightning-fast delivery.</p>
+
+      <!-- Two CTA Buttons -->
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px;">
+        <a href="#our-story-section" class="btn" style="background: rgba(255,255,255,0.18); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(8px);">
+          <i class="fas fa-book-open"></i> Learn More
+        </a>
+        <a href="menu.html" class="btn btn-primary">
+          <i class="fas fa-utensils"></i> Explore Menu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3. OUR STORY ==================== -->
+  <section id="our-story-section" class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+        <div>
+          <span class="subtitle">Since 2024</span>
+          <h2 style="font-size: 2.4rem; font-weight: 800; margin-bottom: 18px;">Our Founding Journey</h2>
+          <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 1rem;">Starting as a small food-tech experiment in 2024, FoodieHub expanded to partner with over 200 executive chefs, cloud kitchens, and premium restaurants. We reimagined food delivery by putting food temperature, ingredient quality, and customer satisfaction first.</p>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1rem;">Today, our algorithm matches your food order with the nearest master chef and ultra-fast rider to guarantee steaming hot deliveries within 30 minutes.</p>
+          
+          <div style="display: flex; gap: 16px;">
+            <a href="menu.html" class="btn btn-primary"><i class="fas fa-utensils"></i> Explore Our Menu</a>
+            <a href="contact.html" class="btn btn-secondary"><i class="fas fa-envelope"></i> Contact Us</a>
+          </div>
+        </div>
+
+        <div>
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" alt="Chefs Cooking" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. MISSION & VISION ==================== -->
+  <section class="section" style="background-color: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="subtitle">Purpose & Guiding Principles</span>
+        <h2>Mission & Vision</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <div style="background: var(--bg-card); padding: 34px; border-radius: var(--radius-lg); border-left: 6px solid var(--primary); box-shadow: var(--shadow-sm); border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">Our Mission</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">To empower food lovers everywhere by connecting them with authentic, freshly cooked meals from top local culinary artists, served with lightning speed and flawless care.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 34px; border-radius: var(--radius-lg); border-left: 6px solid var(--accent-green); box-shadow: var(--shadow-sm); border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+          <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(46,125,50,0.15); color: var(--accent-green); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 18px;">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 12px;">Our Vision</h3>
+          <p style="color: var(--text-muted); line-height: 1.7;">To build the world's most trusted, innovative, and sustainable food discovery network, transforming every mealtime into a delightful gourmet experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. STATISTICS COUNTER ==================== -->
+  <section style="background: var(--secondary); color: #FFFFFF; padding: 70px 0;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center;">
+        <div>
+          <h2 style="font-size: 3.2rem; font-weight: 800; color: var(--primary);">500K+</h2>
+          <p style="color: #94A3B8; font-weight: 600;">Meals Delivered</p>
+        </div>
+        <div>
+          <h2 style="font-size: 3.2rem; font-weight: 800; color: var(--accent-gold);">50K+</h2>
+          <p style="color: #94A3B8; font-weight: 600;">Happy Foodies</p>
+        </div>
+        <div>
+          <h2 style="font-size: 3.2rem; font-weight: 800; color: var(--accent-green);">200+</h2>
+          <p style="color: #94A3B8; font-weight: 600;">Partner Chefs</p>
+        </div>
+        <div>
+          <h2 style="font-size: 3.2rem; font-weight: 800; color: var(--primary);">4.9★</h2>
+          <p style="color: #94A3B8; font-weight: 600;">Average Customer Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. CULINARY EXPERTS TEAM ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="subtitle">OUR PROFESSIONAL TEAM</span>
+        <h2>Meet Our Culinary Experts</h2>
+        <p style="color: var(--text-muted); margin-top: 14px; font-size: 1rem; line-height: 1.6;">Our world-class team combines over 40 years of Michelin-starred culinary mastery, pastry craftsmanship, and technical innovation to deliver unforgettable dining experiences to your table.</p>
+      </div>
+
+      <div class="team-grid">
+        
+        <!-- 1. Marco Vance – Executive Head Chef -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=600&q=80" alt="Marco Vance - Executive Head Chef" class="team-img">
+            <div class="team-social-overlay">
+              <a href="#" class="team-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="team-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="team-body">
+            <h3 class="team-name">Marco Vance</h3>
+            <span class="team-role">Executive Head Chef</span>
+            <p class="team-bio">15+ years of Michelin-starred experience crafting authentic Mediterranean & Italian culinary delights.</p>
+          </div>
+        </div>
+
+        <!-- 2. Sarah Chen – Pastry & Dessert Specialist -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?auto=format&fit=crop&w=600&q=80" alt="Sarah Chen - Pastry & Dessert Specialist" class="team-img">
+            <div class="team-social-overlay">
+              <a href="#" class="team-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="team-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="team-body">
+            <h3 class="team-name">Sarah Chen</h3>
+            <span class="team-role">Pastry & Dessert Specialist</span>
+            <p class="team-bio">Award-winning French pastry artist specializing in artisanal desserts and gourmet baked delicacies.</p>
+          </div>
+        </div>
+
+        <!-- 3. David Miller – Founder & CEO -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="David Miller - Founder & CEO" class="team-img">
+            <div class="team-social-overlay">
+              <a href="#" class="team-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="team-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="team-body">
+            <h3 class="team-name">David Miller</h3>
+            <span class="team-role">Founder & CEO</span>
+            <p class="team-bio">Visionary tech entrepreneur dedicated to revolutionizing local food delivery with speed and transparency.</p>
+          </div>
+        </div>
+
+        <!-- 4. Emily Rodriguez – Executive Sous Chef -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=600&q=80" alt="Emily Rodriguez - Executive Sous Chef" class="team-img">
+            <div class="team-social-overlay">
+              <a href="#" class="team-social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="team-social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="team-body">
+            <h3 class="team-name">Emily Rodriguez</h3>
+            <span class="team-role">Executive Sous Chef</span>
+            <p class="team-bio">Master of Latin fusion & grill techniques, ensuring rigorous kitchen standards and flavor perfection.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: #FFF;">
+            <i class="fas fa-utensils"></i>
+            <span>Foodie</span>Hub
+          </a>
+          <p style="margin-top: 14px; font-size: 0.9rem;">FoodieHub brings gourmet meals from your favorite local restaurants straight to your home.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Explore Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Newsletter</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 14px;">Subscribe for discount coupons.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 10px; border-radius: var(--radius-sm); border: none; width: 100%;">
+            <button class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FoodieHub Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top Button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

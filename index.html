@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FoodieHub - Fresh, delicious food delivered straight to your doorstep in minutes. Order online from top restaurants.">
+  <title>FoodieHub - Premium Online Food Ordering</title>
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== STICKY NAVBAR ==================== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>Foodie</span>Hub
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Wishlist Icon Button -->
+        <a href="wishlist.html" class="wishlist-icon-btn" aria-label="My Wishlist" title="My Wishlist">
+          <i class="fas fa-heart"></i>
+          <span class="wishlist-badge">0</span>
+        </a>
+
+        <!-- Cart Icon Button -->
+        <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart" title="Shopping Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </a>
+
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Open Mobile Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO BANNER & SEARCH ==================== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="badge badge-primary" style="margin-bottom: 14px;"><i class="fas fa-bolt"></i> Ultra Fast 30 Min Delivery</span>
+          <h1>Delicious Food Delivered To Your <span>Doorstep</span></h1>
+          <p>Satisfy your cravings with thousands of mouth-watering dishes from top gourmet restaurants near you. Fast, hot, and delicious!</p>
+          
+          <form action="menu.html" method="GET" class="hero-search-bar">
+            <input type="text" name="search" placeholder="Search for burgers, pizzas, biryani...">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+          </form>
+        </div>
+
+        <div class="hero-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80" alt="Delicious Burger" class="hero-img">
+          <div class="hero-badge-float">
+            <i class="fas fa-star"></i>
+            <div>
+              <strong style="display: block; font-weight: 700;">4.9 / 5.0 Rating</strong>
+              <small style="color: var(--text-muted);">From 10,000+ Happy Customers</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== POPULAR CATEGORIES ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="subtitle">Quick Browse</span>
+        <h2>Popular Food Categories</h2>
+      </div>
+
+      <div class="categories-grid">
+        <a href="menu.html?category=Burger" class="category-card">
+          <i class="fas fa-hamburger"></i>
+          <h4>Burgers</h4>
+        </a>
+        <a href="menu.html?category=Pizza" class="category-card">
+          <i class="fas fa-pizza-slice"></i>
+          <h4>Pizzas</h4>
+        </a>
+        <a href="menu.html?category=Biryani" class="category-card">
+          <i class="fas fa-drumstick-bite"></i>
+          <h4>Biryani</h4>
+        </a>
+        <a href="menu.html?category=Pasta" class="category-card">
+          <i class="fas fa-bowl-food"></i>
+          <h4>Pasta</h4>
+        </a>
+        <a href="menu.html?category=Sea Food" class="category-card">
+          <i class="fas fa-fish"></i>
+          <h4>Seafood</h4>
+        </a>
+        <a href="menu.html?category=Desserts" class="category-card">
+          <i class="fas fa-cookie"></i>
+          <h4>Desserts</h4>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== POPULAR FOODS ==================== -->
+  <section class="section" style="background-color: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="subtitle">Trending Dishes</span>
+        <h2>Chef Special Recommendations</h2>
+      </div>
+
+      <div id="home-featured-grid" class="food-grid">
+        <!-- Dynamically Rendered -->
+      </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="menu.html" class="btn btn-outline-primary"><i class="fas fa-utensils"></i> Explore Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== POPULAR RESTAURANTS ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="subtitle">Top Rated</span>
+        <h2>Popular Partner Restaurants</h2>
+      </div>
+
+      <div class="restaurant-grid">
+        <div class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Burger Lounge" class="restaurant-img">
+          <div class="restaurant-body">
+            <h3 class="restaurant-title">The Gourmet Burger Lounge</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">American • Burgers • Fries</p>
+            <div class="restaurant-meta">
+              <span><i class="fas fa-star" style="color: var(--accent-gold);"></i> 4.8 (1.2k)</span>
+              <span><i class="far fa-clock"></i> 20-30 min</span>
+              <span><i class="fas fa-motorcycle"></i> Free Delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Bella Italia" class="restaurant-img">
+          <div class="restaurant-body">
+            <h3 class="restaurant-title">Bella Italia Woodfire Pizza</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Italian • Pizza • Pasta</p>
+            <div class="restaurant-meta">
+              <span><i class="fas fa-star" style="color: var(--accent-gold);"></i> 4.9 (2.4k)</span>
+              <span><i class="far fa-clock"></i> 25-35 min</span>
+              <span><i class="fas fa-motorcycle"></i> $2.99 Delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="restaurant-card">
+          <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=600&q=80" alt="Sakura Sushi" class="restaurant-img">
+          <div class="restaurant-body">
+            <h3 class="restaurant-title">Sakura Japanese & Ramen Bar</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Japanese • Sushi • Ramen</p>
+            <div class="restaurant-meta">
+              <span><i class="fas fa-star" style="color: var(--accent-gold);"></i> 4.7 (950)</span>
+              <span><i class="far fa-clock"></i> 30-40 min</span>
+              <span><i class="fas fa-motorcycle"></i> Free Delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SPECIAL OFFERS ==================== -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%); color: #FFFFFF;">
+    <div class="container">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px;">
+        <div>
+          <span class="badge" style="background: rgba(255,255,255,0.25); color: #FFFFFF; margin-bottom: 10px;">Limited Time Offer</span>
+          <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;">Get 20% OFF On Your First Order!</h2>
+          <p style="font-size: 1.1rem; opacity: 0.95;">Use promo code <strong style="background: #FFFFFF; color: var(--primary); padding: 3px 12px; border-radius: 6px;">SAVER20</strong> at checkout.</p>
+        </div>
+        <a href="menu.html" class="btn" style="background: #FFFFFF; color: var(--primary); font-weight: 700;">Order Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY CHOOSE US ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="subtitle">Our Guarantees</span>
+        <h2>Why Order From FoodieHub?</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center;">
+        <div style="background: var(--bg-card); padding: 32px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <i class="fas fa-shipping-fast" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 16px;"></i>
+          <h3 style="margin-bottom: 10px;">30 Min Delivery</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Lightning fast delivery ensuring your food arrives steaming hot.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 32px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <i class="fas fa-leaf" style="font-size: 2.5rem; color: var(--accent-green); margin-bottom: 16px;"></i>
+          <h3 style="margin-bottom: 10px;">100% Fresh Ingredients</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Sourced daily from verified organic farms and premium suppliers.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 32px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <i class="fas fa-headset" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 16px;"></i>
+          <h3 style="margin-bottom: 10px;">24/7 Support</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Our friendly support staff is always online to help with your order.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: #FFF;">
+            <i class="fas fa-utensils"></i>
+            <span>Foodie</span>Hub
+          </a>
+          <p style="margin-top: 14px; font-size: 0.9rem;">FoodieHub brings gourmet meals from your favorite local restaurants straight to your home.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Explore Menu</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Newsletter</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 14px;">Subscribe for discount coupons.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email address" style="padding: 10px; border-radius: var(--radius-sm); border: none; width: 100%;">
+            <button class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 FoodieHub Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick View Modal -->
+  <div id="quick-view-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Scroll To Top Button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/foodData.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHomeFeatured();
+    });
+
+    window.addEventListener('wishlistUpdated', () => {
+      renderHomeFeatured();
+    });
+
+    function renderHomeFeatured() {
+      const container = document.getElementById('home-featured-grid');
+      if (container) {
+        const featured = (window.FOOD_DATASET || []).slice(0, 6);
+        const favs = JSON.parse(localStorage.getItem('foodiehub_favorites')) || [];
+
+        container.innerHTML = featured.map(meal => {
+          const isVeg = meal.veg !== undefined ? meal.veg : meal.isVeg;
+          const offerVal = meal.offer !== undefined ? meal.offer : meal.offerPercentage;
+          const prepTime = meal.time || meal.preparationTime || '20 min';
+          const isFav = favs.includes(meal.id) || favs.includes(String(meal.id));
+
+          return `
+            <div class="food-card">
+              <div class="food-card-img-wrapper">
+                <img src="${meal.image}" alt="${meal.name}" class="food-card-img" loading="lazy">
+                <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${meal.id}" onclick="toggleFavorite('${meal.id}')" title="Wishlist">
+                  <i class="fas fa-heart" ${isFav ? 'style="color:#E74C3C;"' : ''}></i>
+                </button>
+                <span class="food-card-tag">${meal.category}</span>
+                ${offerVal > 0 ? `<span style="position: absolute; top: 14px; left: 14px; background: var(--primary); color: #FFF; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px;">${offerVal}% OFF</span>` : ''}
+              </div>
+              <div class="food-card-body">
+                <div class="food-card-header">
+                  <h3 class="food-title">${meal.name}</h3>
+                  <span class="rating-badge"><i class="fas fa-star"></i> ${meal.rating}</span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                  <span>${meal.cuisine} Cuisine • <i class="far fa-clock"></i> ${prepTime}</span>
+                  <span class="badge ${isVeg ? 'badge-green' : 'badge-primary'}" style="font-size: 0.7rem;">${isVeg ? 'Veg 🌱' : 'Non-Veg 🍗'}</span>
+                </div>
+                <div class="food-card-footer">
+                  <span class="food-price">$${meal.price.toFixed(2)}</span>
+                  <div class="card-actions">
+                    <button class="btn btn-secondary btn-sm" onclick='openQuickView(${JSON.stringify(meal).replace(/'/g, "&apos;")})'>
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick='cartEngine.addItem(${JSON.stringify(meal).replace(/'/g, "&apos;")})'>
+                      <i class="fas fa-plus"></i> Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+  </script>
+</body>
+</html>
